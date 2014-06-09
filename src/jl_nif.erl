@@ -21,4 +21,4 @@ run(GlobalSize, LocalSize, KernelType, KernelSrc, FunSrc, FunName, Input) ->
 
 
 
-  
+

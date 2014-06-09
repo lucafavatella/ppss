@@ -18,7 +18,7 @@ custom_get_string(ErlNifEnv *env, ERL_NIF_TERM list, char* buf)
   int len, val;
 
   while (enif_get_list_cell(env, list, &head, &tail)) {
-    if (!enif_get_int(env, head, &val)) 
+    if (!enif_get_int(env, head, &val))
       {
 	return 0;
       }
@@ -39,7 +39,7 @@ custom_get_float64_array(ErlNifEnv* env, ERL_NIF_TERM list, double* buf)
   double val;
 
   while (enif_get_list_cell(env, list, &head, &tail)) {
-    if (!enif_get_double(env, head, &val)) 
+    if (!enif_get_double(env, head, &val))
       {
 	return 0;
       }
@@ -68,14 +68,14 @@ load_file(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
       return enif_make_badarg(env);
     }
 
-  if (!enif_get_list_length(env, argv[0], &len)) 
+  if (!enif_get_list_length(env, argv[0], &len))
     {
       return enif_make_badarg(env);
     }
 
   char* filename = (char*) malloc(sizeof(char) * len);
-  
-  if (!custom_get_string(env, argv[0], filename)) 
+
+  if (!custom_get_string(env, argv[0], filename))
     {
       return enif_make_badarg(env);
     }
@@ -89,7 +89,7 @@ static ERL_NIF_TERM
 run(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
   JL_SET_STACK_BASE;
-  
+
   int global_size, local_size;
   int kernel_type_len, kernel_path_len;
   int fun_path_len, fun_name_len;
@@ -105,7 +105,7 @@ run(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   if (!enif_get_uint(env, argv[1], &local_size)) {
     return enif_make_badarg(env);
   }
-  
+
   if (!enif_get_list_length(env, argv[2], &kernel_type_len)) {
     return enif_make_badarg(env);
   }
@@ -150,7 +150,7 @@ run(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
   jl_function_t* ocl_kernel_type =
     jl_get_function((jl_module_t*) ocl_sk_mod, kernel_type);
-  
+
   jl_value_t* ocl_global_size = jl_box_uint32(global_size);
   jl_value_t* ocl_local_size = jl_box_uint32(local_size);
 
@@ -163,7 +163,7 @@ run(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   free(fun_name);
 
   const int n_kernel_args = 5;
-  jl_value_t** ocl_kernel_args = 
+  jl_value_t** ocl_kernel_args =
     (jl_value_t**) malloc(sizeof(jl_value_t*) * n_kernel_args);
 
   const int n_run_args = 2;
@@ -173,7 +173,7 @@ run(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   jl_value_t* ocl_array_type = jl_apply_array_type(jl_float64_type, 1);
 
   jl_array_t* ocl_input = jl_ptr_to_array_1d(ocl_array_type, input, input_len, 1);
-  
+
   ocl_kernel_args[0] = ocl_global_size;
   ocl_kernel_args[1] = ocl_local_size;
   ocl_kernel_args[2] = ocl_kernel_path;
@@ -216,7 +216,7 @@ load(ErlNifEnv* env, void** priv, ERL_NIF_TERM load_info)
     exit(EXIT_FAILURE);
   }
   dlerror();
-  
+
   jl_init(NULL);
 
   JL_SET_STACK_BASE;

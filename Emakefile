@@ -1,10 +1,10 @@
 { [ 'c_src/*',
-    'src/*', 
-    'src/*/*', 
-    'src/*/*/*', 
-    'src/*/*/*/*', 
+    'src/*',
+    'src/*/*',
+    'src/*/*/*',
+    'src/*/*/*/*',
     'src/*/*/*/*/*',
-    'gen-erl/*'    
+    'gen-erl/*'
     ], [
   {i, "include"},
   {outdir, "ebin"},

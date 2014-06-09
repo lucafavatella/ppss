@@ -88,7 +88,7 @@ function run (sk::OclReduce, input::Array{Float64})
     s_buff = cl.LocalMem(Float64, sk.local_size)
     o_buff = cl.Buffer(Float64, ctx, :w, i_len)
 
-    cl.call(queue, reduce_k, sk.global_size, sk.local_size, 
+    cl.call(queue, reduce_k, sk.global_size, sk.local_size,
             i_buff, s_buff, uint32(i_len), o_buff)
 
     cl.read(queue, o_buff)
@@ -112,7 +112,7 @@ function run (sk::OclReduce, input::Array{Float64}, block::Uint32)
     i_buff = cl.Buffer(Float64, ctx, (:r, :copy), hostbuf=input)
     o_buff = cl.Buffer(Float64, ctx, :w, i_len)
 
-    cl.call(queue, reduce_k, sk.global_size, sk.local_size, 
+    cl.call(queue, reduce_k, sk.global_size, sk.local_size,
             i_buff, uint32(block), uint32(i_len), o_buff)
 
     cl.read(queue, o_buff)

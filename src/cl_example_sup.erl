@@ -36,16 +36,16 @@ init([]) ->
   RestartStrategy = one_for_one,
   MaxRestarts = 1000,
   MaxTimeBetRestarts = 3600,
-  
+
   SupFlags = {RestartStrategy, MaxRestarts, MaxTimeBetRestarts},
-  ChildSpecs = 
-    [ 
+  ChildSpecs =
+    [
       {cl_example_srv,
        {cl_example_srv, start_link, []},
        permanent,
        1000,
        worker,
-       [cl_example_srv]} 
+       [cl_example_srv]}
     ],
   {ok, {SupFlags, ChildSpecs}}.
-  
+

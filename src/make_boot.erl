@@ -16,7 +16,7 @@ write_scripts(Args) ->
     application:loaded_applications()),
 
   Rel = "{release, {\"~s\", \"~s\"}, {erts, \"~s\"}, ["
-          "{kernel, \"~s\"}, {stdlib, \"~s\"}, 
+          "{kernel, \"~s\"}, {stdlib, \"~s\"},
           {sasl, \"~s\"}, {~s, \"~s\"}]}.",
 
   Lowername = string:to_lower(Name),
@@ -25,13 +25,13 @@ write_scripts(Args) ->
   io:format("Writing to ~p (as ~s)~n", [Filename, Lowername]),
   {ok, Fs} = file:open(Filename, [write]),
 
-  io:format(Fs, Rel, [Name, 
-                      Version, 
-                      Erts, 
-                      Kernel, 
-                      Stdlib, 
-                      Sasl, 
-                      Lowername, 
+  io:format(Fs, Rel, [Name,
+                      Version,
+                      Erts,
+                      Kernel,
+                      Stdlib,
+                      Sasl,
+                      Lowername,
                       Version]),
   file:close(Fs),
 

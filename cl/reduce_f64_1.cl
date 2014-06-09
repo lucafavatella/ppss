@@ -4,7 +4,7 @@ void reduce_f64(
  __local double* scratch,
  __const int length,
  __global double* output
-) 
+)
 {
   int gidx = get_global_id(0);
   int lidx = get_local_id(0);

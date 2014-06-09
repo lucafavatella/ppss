@@ -29,7 +29,7 @@ Then its a simple matter of calling make.
 # compile the code
 make
 
-# create a boot file 
+# create a boot file
 make make_boot
 ```
 
@@ -50,7 +50,7 @@ cl_example_srv:process_data(Xs).
 
 ##### Directory Structure
 
-| Path    | Description 
+| Path    | Description
 | ------- |:-------------------------------------------:|
 | ebin/   | Erlang compiles beam code to this directory
 | src/    | Erlang sources
@@ -71,8 +71,8 @@ cl_example_srv:process_data(Xs).
 
 ###### C Sources (c_src)
 
-There is only one C source file which is responsible for binding Erlang and 
-Julia together via the Erlang NIF. 
+There is only one C source file which is responsible for binding Erlang and
+Julia together via the Erlang NIF.
 
 ###### OpenCL Kernels (cl/*.cl)
 ###### OpenCL Functions (cl/fun/*.cl)

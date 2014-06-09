@@ -14,7 +14,7 @@ compile:
 	@$(CC) -noinput +B -eval 'case make:all() of up_to_date -> halt(0); error -> halt(1) end.'
 	(cd c_src; make)
 
-edoc:		
+edoc:
 	@echo Generating $(APP) documentation from srcs
 	@$(CC) -noinput -eval 'edoc:application($(APP), "./", [{doc, "doc/"}, {files, "src/"}])' -s erlang halt
 
