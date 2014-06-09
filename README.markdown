@@ -23,7 +23,7 @@ export JULIA_HOME=/path/to/julia/
 export ERLANG_HOME=/path/to/erlang/lib/
 ```
 
-Then its a simple matter of calling make.
+Then it's a simple matter of calling make.
 
 ```bash
 # compile the code
